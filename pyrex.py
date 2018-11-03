@@ -1,36 +1,36 @@
 import re
 
-# Check if string is a strictly positive number using regex matching
 def is_strictly_positive_number(string):
+# Check is a string can be evaluated as a stricly positve number on the form 10.0, +1.0e+2, etc.
     if re.match('^[+]?([1-9][0-9]*(?:[\.][0-9]*)?|0*\.0*[1-9][0-9]*)(?:[eE][+-]?[0-9]+)?$',string):
         return True
     else:
         return False
 
-# Check if string is a strictly negative number using regex matching
 def is_strictly_negative_number(string):
+# Check is a string can be evaluated as a stricly negative number on the form -10.0, -1.0e+2, etc.
     if re.match('^[-]([1-9][0-9]*(?:[\.][0-9]*)?|0*\.0*[1-9][0-9]*)(?:[eE][+-]?[0-9]+)?$',string):
         return True
     else:
         return False
 
-# Check if string is a non-zero number using regex matching
 def is_nonzero_number(string):
+# Check is a string can be evaluated as a non-zero number on the form 10.0, 1.0e+2, etc.
     if re.match('^[+-]?([1-9][0-9]*(?:[\.][0-9]*)?|0*\.0*[1-9][0-9]*)(?:[eE][+-]?[0-9]+)?$',string):
         return True
     else:
         return False
 
-# Check if string is a number using regex matching
 def is_number(string):
+# Check is a string can be evaluated as a number on the form 10.0, -1.0e+2, etc.
     if re.match('^[+-]?([0-9]*(?:[\.][0-9]*)?|0*\.0*[1-9][0-9]*)(?:[eE][+-]?[0-9]+)?$',string):
         return True
     else:
         return False
 
-# Get ratio from string
 def rational_fraction_from_string(string):
-    if re.match('^[1-9][0-9]*:[1-9][0-9]*$',string):
+# Get rational fraction from sting of type n:m or n/m
+    if re.match('^[1-9][0-9]*[:/][1-9][0-9]*$',string):
         n = float(string[0:string.find(':')])
         m = float(string[string.find(':')+1:])
         return n/m
